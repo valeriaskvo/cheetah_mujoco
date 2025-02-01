@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="cheetah">
+  <mujoco>
+    <compiler discardvisual="false" meshdir="meshes"/>
+  </mujoco>
+
+  <link name="world"/>
+
+  <joint name="floating_base_joint" type="floating">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <link name="base">
+    <inertial>
+      <origin xyz="0.36059 -3.5411E-08 2.6263E-08" rpy="0 0 0"/>
+      <mass value="4"/>
+      <inertia ixx="0.031067" ixy="7.2236E-07" ixz="-5.0739E-09" iyy="0.086585" iyz="6.4071E-10" izz="0.086267"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/base.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="fl_hip">
+    <inertial>
+      <origin xyz="-5.5511E-17 -0.0083713 -0.088755" rpy="0 0 0"/>
+      <mass value="0.42319"/>
+      <inertia ixx="0.0034493" ixy="-5.0483E-19" ixz="-4.1471E-18" iyy="0.0031537" iyz="0.00031443" izz="0.00078763"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/fl_hip.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fl_hip_joint" type="revolute">
+    <origin xyz="0.485 0.1775 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="fl_hip"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="fl_knee">
+    <inertial>
+      <origin xyz="0.13698 2.7756E-17 5.2736E-16" rpy="0 0 0"/>
+      <mass value="0.19172"/>
+      <inertia ixx="8.8217E-05" ixy="-1.758E-20" ixz="-5.604E-18" iyy="0.0020898" iyz="-4.4981E-21" izz="0.0020349"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/fl_knee.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fl_knee_joint" type="revolute">
+    <origin xyz="0 0 -0.21" rpy="0 0.5236 0"/>
+    <parent link="fl_hip"/>
+    <child link="fl_knee"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="fr_hip">
+    <inertial>
+      <origin xyz="1.6653E-16 0.0083713 -0.088755" rpy="0 0 0"/>
+      <mass value="0.42319"/>
+      <inertia ixx="0.0034493" ixy="2.3572E-19" ixz="2.2904E-18" iyy="0.0031537" iyz="-0.00031443" izz="0.00078763"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/fr_hip.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fr_hip_joint" type="revolute">
+    <origin xyz="0.485 -0.1775 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="fr_hip"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="fr_knee">
+    <inertial>
+      <origin xyz="0.13698 0 3.3307E-16" rpy="0 0 0"/>
+      <mass value="0.19172"/>
+      <inertia ixx="8.8217E-05" ixy="1.5207E-19" ixz="-6.3324E-18" iyy="0.0020898" iyz="1.8285E-21" izz="0.0020349"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/fr_knee.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="fr_knee_joint" type="revolute">
+    <origin xyz="0 0 -0.21" rpy="0 0.5236 0"/>
+    <parent link="fr_hip"/>
+    <child link="fr_knee"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="spine">
+    <inertial>
+      <origin xyz="-0.21386 2.4147E-07 -3.6136E-08" rpy="0 0 0"/>
+      <mass value="2.818"/>
+      <inertia ixx="0.0104" ixy="1.0013E-07" ixz="-3.0062E-08" iyy="0.019596" iyz="-4.2309E-09" izz="0.019319"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/spine.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="spine_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0.5236 0"/>
+    <parent link="base"/>
+    <child link="spine"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="bl_hip">
+    <inertial>
+      <origin xyz="7.494E-15 -0.0038172 -0.088124" rpy="0 0 0"/>
+      <mass value="0.39061"/>
+      <inertia ixx="0.0028011" ixy="1.9793E-17" ixz="-7.9364E-17" iyy="0.0027022" iyz="0.0001314" izz="0.00056783"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/bl_hip.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="bl_hip_joint" type="revolute">
+    <origin xyz="-0.28023 0.1375 0" rpy="0 0.087266 0"/>
+    <parent link="spine"/>
+    <child link="bl_hip"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="bl_knee">
+    <inertial>
+      <origin xyz="-0.053791 -2.7756E-17 6.9389E-17" rpy="0 0 0"/>
+      <mass value="0.10247"/>
+      <inertia ixx="4.7124E-05" ixy="9.0388E-22" ixz="3.128E-20" iyy="0.00030978" iyz="-2.1917E-22" izz="0.00028658"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/bl_knee.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="bl_knee_joint" type="revolute">
+    <origin xyz="0 0 -0.2" rpy="0 -0.5236 0"/>
+    <parent link="bl_hip"/>
+    <child link="bl_knee"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="br_hip">
+    <inertial>
+      <origin xyz="6.8279E-15 0.0038172 -0.088124" rpy="0 0 0"/>
+      <mass value="0.39061"/>
+      <inertia ixx="0.0028011" ixy="-2.4338E-17" ixz="-1.0842E-16" iyy="0.0027022" iyz="-0.0001314" izz="0.00056783"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/br_hip.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="br_hip_joint" type="revolute">
+    <origin xyz="-0.28023 -0.1375 0" rpy="0 0.087266 0"/>
+    <parent link="spine"/>
+    <child link="br_hip"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+  <link name="br_knee">
+    <inertial>
+      <origin xyz="-0.053791 -2.7756E-17 -9.7145E-17" rpy="0 0 0"/>
+      <mass value="0.10247"/>
+      <inertia ixx="4.7124E-05" ixy="-1.3804E-22" ixz="-4.763E-20" iyy="0.00030978" iyz="-3.2608E-23" izz="0.00028658"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah/meshes/br_knee.STL"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="br_knee_joint" type="revolute">
+    <origin xyz="0 0 -0.2" rpy="0 -0.5236 0"/>
+    <parent link="br_hip"/>
+    <child link="br_knee"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+</robot>
