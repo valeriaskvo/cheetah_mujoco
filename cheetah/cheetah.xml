@@ -51,27 +51,27 @@
         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="spine"/>
         <geom type="capsule" density="0" size="0.0975" fromto="-0.1725 0 0 -0.270 0 0" material="collision"/>
         <body name="bl_hip" pos="-0.28023 0.1375 0" quat="0.999048 0 0.0436192 0">
-          <inertial pos="0 -0.0038172 -0.088124" quat="0.999531 0.030623 0 0" mass="0.39061" diaginertia="0.0028011 0.00271026 0.000559771"/>
+          <inertial pos="-1.5467e-06 -0.0036898 -0.092943" quat="0.999589 0.0286807 1.42074e-05 -8.99596e-06" mass="0.40409" diaginertia="0.0030903 0.00299916 0.000578271"/>
           <joint name="bl_hip_joint" pos="0 0 0" axis="0 1 0"/>
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="bl_hip"/>
-          <geom type="capsule" density="0" size="0.045" fromto="0 0.0225 0 0 0.0225 -0.2" material="collision"/>
-          <body name="bl_knee" pos="0 0 -0.2" quat="0.965926 0 -0.25882 0">
-            <inertial pos="-0.053791 0 0" quat="0.5 0.5 0.5 0.5" mass="0.10247" diaginertia="0.00030978 0.00028658 4.7124e-05"/>
+          <geom type="capsule" density="0" size="0.045" fromto="0 0.0225 0 0 0.0225 -0.21" material="collision"/>
+          <body name="bl_knee" pos="0 0 -0.21" quat="0.965926 0 -0.25882 0">
+            <inertial pos="-0.136981 0 0" quat="0.5 0.5 0.5 0.5" mass="0.191716" diaginertia="0.00208985 0.00203485 8.82166e-05"/>
             <joint name="bl_knee_joint" pos="0 0 0" axis="0 1 0"/>
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="bl_knee"/>
-            <geom type="capsule" density="0" size="0.035" fromto="-0.08 0.0225 0 -0.12 0.0225 0" material="collision"/>
+            <geom type="capsule" density="0" size="0.035" fromto="-0.08 0.0225 0 -0.29 0.0225 0" material="collision"/>
           </body>
         </body>
         <body name="br_hip" pos="-0.28023 -0.1375 0" quat="0.999048 0 0.0436192 0">
-          <inertial pos="0 0.0038172 -0.088124" quat="0.999531 -0.030623 0 0" mass="0.39061" diaginertia="0.0028011 0.00271026 0.000559771"/>
+          <inertial pos="0 0.00368968 -0.092947" quat="0.999589 -0.0286799 0 0" mass="0.404108" diaginertia="0.00309049 0.00299939 0.00057831"/>
           <joint name="br_hip_joint" pos="0 0 0" axis="0 1 0"/>
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="br_hip"/>
-          <geom type="capsule" density="0" size="0.045" fromto="0 -0.0225 0 0 -0.0225 -0.2" material="collision"/>
-          <body name="br_knee" pos="0 0 -0.2" quat="0.965926 0 -0.25882 0">
-            <inertial pos="-0.053791 0 0" quat="0.5 0.5 0.5 0.5" mass="0.10247" diaginertia="0.00030978 0.00028658 4.7124e-05"/>
+          <geom type="capsule" density="0" size="0.045" fromto="0 -0.0225 0 0 -0.0225 -0.21" material="collision"/>
+          <body name="br_knee" pos="0 0 -0.21" quat="0.965926 0 -0.25882 0">
+            <inertial pos="-0.136981 0 0" quat="0.5 0.5 0.5 0.5" mass="0.191716" diaginertia="0.00208985 0.00203485 8.82166e-05"/>
             <joint name="br_knee_joint" pos="0 0 0" axis="0 1 0"/>
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="br_knee"/>
-            <geom type="capsule" density="0" size="0.035" fromto="-0.08 -0.0225 0 -0.12 -0.0225 0" material="collision"/>
+            <geom type="capsule" density="0" size="0.035" fromto="-0.08 -0.0225 0 -0.29 -0.0225 0" material="collision"/>
           </body>
         </body>
       </body>
