@@ -26,7 +26,7 @@ The `/images` folder contains reference images illustrating the cheetah robot's 
 
 **Legs Dimensions:** 
 
-![Legs Dimensions](images/legs_dimensions.png)   
+   
 
 These dimensions are provided to assist in future development and modification of the robot.
 
