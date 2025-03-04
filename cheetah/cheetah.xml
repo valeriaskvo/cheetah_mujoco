@@ -12,10 +12,10 @@
   <default>
     <geom group="2" contype="0" conaffinity="0" density="0" type="mesh"/>
     <default class="cheetah/collision">
-      <geom group="0" contype="1" conaffinity="1" density="0" material="collision"/>
+      <geom group="0" contype="1" conaffinity="1" density="0" material="collision" shellinertia="true"/>
     </default>
     <default class="cheetah/foot">
-      <geom group="1" type="sphere" density="0" size="0.035" solimp="0.015 1 0.031" friction="0.8 0.02 0.01" material="contact"/>
+      <geom group="1" type="sphere" density="0" size="0.035" solimp="0.015 1 0.031" friction="0.8 0.02 0.01" material="contact" shellinertia="true"/>
     </default>
     <general forcerange="-18 18" biastype="affine" gainprm="50 0 0" biasprm="0 -50 -0.5"/>
     <joint damping="0.024" armature="0.011" range="-0.78 0.78"/>
