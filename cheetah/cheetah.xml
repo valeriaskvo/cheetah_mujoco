@@ -1,5 +1,5 @@
 <mujoco model="cheetah">
-  <compiler angle="radian" meshdir="meshes/" inertiafromgeom="false"/>
+  <compiler angle="radian" meshdir="meshes/"/>
 
   <default>
     <geom group="2" contype="0" conaffinity="0" density="0" type="mesh"/>
