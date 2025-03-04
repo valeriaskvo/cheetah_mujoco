@@ -61,7 +61,7 @@
           <geom type="mesh" mesh="fl_knee"/>
           <geom type="capsule" size="0.035" fromto="0.08 0.0225 0 0.29 0.0225 0" class="cheetah/collision"/>
           <body name="fl_foot" pos="0.29 0.0225 0">
-            <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+            <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
             <geom class="cheetah/foot"/>
             <site name="fl_foot"/>
           </body>
@@ -78,7 +78,7 @@
           <geom type="mesh" mesh="fr_knee"/>
           <geom type="capsule" size="0.035" fromto="0.08 -0.0225 0 0.29 -0.0225 0" class="cheetah/collision"/>
           <body name="fr_foot" pos="0.29 -0.0225 0">
-            <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+            <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
             <geom class="cheetah/foot"/>
             <site name="fr_foot"/>
           </body>
@@ -100,7 +100,7 @@
             <geom type="mesh" mesh="bl_knee"/>
             <geom type="capsule" size="0.035" fromto="-0.08 0.0225 0 -0.29 0.0225 0" class="cheetah/collision"/>
             <body name="bl_foot" pos="-0.29 0.0225 0">
-              <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+              <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
               <geom class="cheetah/foot"/>
               <site name="bl_foot"/>
             </body>
@@ -117,7 +117,7 @@
             <geom type="mesh" mesh="br_knee"/>
             <geom type="capsule" size="0.035" fromto="-0.08 -0.0225 0 -0.29 -0.0225 0" class="cheetah/collision"/>
             <body name="br_foot" pos="-0.29 -0.0225 0">
-              <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+              <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
               <geom class="cheetah/foot"/>
               <site name="br_foot"/>
             </body>
