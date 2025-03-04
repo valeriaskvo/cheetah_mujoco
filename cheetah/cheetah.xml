@@ -22,16 +22,16 @@
   </default>
 
   <asset>
-    <mesh name="base" file="base.STL" inertia="convex"/>
-    <mesh name="fl_hip" file="fl_hip.STL" inertia="convex"/>
-    <mesh name="fl_knee" file="fl_knee.STL" inertia="convex"/>
-    <mesh name="fr_hip" file="fr_hip.STL" inertia="convex"/>
-    <mesh name="fr_knee" file="fr_knee.STL" inertia="convex"/>
-    <mesh name="spine" file="spine.STL" inertia="convex"/>
-    <mesh name="bl_hip" file="bl_hip.STL" inertia="convex"/>
-    <mesh name="bl_knee" file="bl_knee.STL" inertia="convex"/>
-    <mesh name="br_hip" file="br_hip.STL" inertia="convex"/>
-    <mesh name="br_knee" file="br_knee.STL" inertia="convex"/>
+    <mesh name="base" file="base.STL" inertia="shell"/>
+    <mesh name="fl_hip" file="fl_hip.STL" inertia="shell"/>
+    <mesh name="fl_knee" file="fl_knee.STL" inertia="shell"/>
+    <mesh name="fr_hip" file="fr_hip.STL" inertia="shell"/>
+    <mesh name="fr_knee" file="fr_knee.STL" inertia="shell"/>
+    <mesh name="spine" file="spine.STL" inertia="shell"/>
+    <mesh name="bl_hip" file="bl_hip.STL" inertia="shell"/>
+    <mesh name="bl_knee" file="bl_knee.STL" inertia="shell"/>
+    <mesh name="br_hip" file="br_hip.STL" inertia="shell"/>
+    <mesh name="br_knee" file="br_knee.STL" inertia="shell"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
     <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
       markrgb="0.8 0.8 0.8" width="300" height="300"/>
