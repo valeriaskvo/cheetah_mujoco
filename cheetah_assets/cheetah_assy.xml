@@ -1,0 +1,67 @@
+<mujoco model="cheetah">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <asset>
+    <mesh name="base" file="base.STL"/>
+    <mesh name="spine" file="spine.STL"/>
+    <mesh name="fl_hip" file="fl_hip.STL"/>
+    <mesh name="fl_knee" file="fl_knee.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="base">
+      <inertial pos="0.36059 -3.5411e-08 2.6263e-08" quat="0.500003 0.500003 0.499997 0.499997" mass="4" diaginertia="0.086585 0.086267 0.031067"/>
+      <geom type="mesh" mesh="base"/>
+      <geom size="0.14 0.15" pos="0.365 0 0" quat="0.707107 0 -0.707107 0" type="capsule" rgba="0.85 0.65 0.25 0.5"/>
+      <site name="imu_frame" pos="0.485 0 0"/>
+      <site name="fl_hip_mount" pos="0.485 0.1775 0"/>
+      <site name="fr_hip_mount" pos="0.485 -0.1775 0"/>
+      <body name="spine" quat="0.965926 0 0.25882 0">
+        <inertial pos="-0.21386 2.4147e-07 -3.6136e-08" quat="0.500007 0.499998 0.5 0.499994" mass="2.818" diaginertia="0.019596 0.019319 0.0104"/>
+        <joint name="spine_joint" pos="0 0 0" axis="0 1 0" range="-0.78 0.78" armature="0.011" damping="0.024"/>
+        <geom type="mesh" mesh="spine"/>
+        <geom size="0.0975 0.04875" pos="-0.22125 0 0" quat="0.707107 0 0.707107 0" type="capsule" rgba="0.85 0.65 0.25 0.5"/>
+        <site name="bl_hip_mount" pos="-0.28023 0.1375 0" quat="0.999048 0 0.0436192 0"/>
+        <site name="br_hip_mount" pos="-0.28023 -0.1375 0" quat="0.999048 0 0.0436192 0"/>
+      </body>
+      <body name="fl_hip" pos="0.485 0.1775 0">
+        <inertial pos="0 -0.0083713 -0.088755" quat="0.997892 0.0648985 0 0" mass="0.42319" diaginertia="0.0034493 0.00319477 0.000746558"/>
+        <joint name="fl_hip_joint" pos="0 0 0" axis="0 1 0"/>
+        <geom type="mesh" mesh="fl_hip"/>
+        <geom size="0.045 0.105" pos="0 0.0225 -0.105" type="capsule" rgba="0.85 0.65 0.25 0.5"/>
+        <body name="fl_knee" pos="0 0 -0.21" quat="0.965926 0 0.25882 0">
+          <inertial pos="0.13698 0 0" quat="0.5 0.5 0.5 0.5" mass="0.19172" diaginertia="0.0020898 0.0020349 8.8217e-05"/>
+          <joint name="fl_knee_joint" pos="0 0 0" axis="0 1 0"/>
+          <geom type="mesh" mesh="fl_knee"/>
+          <geom size="0.035 0.105" pos="0.185 0.0225 0" quat="0.707107 0 -0.707107 0" type="capsule" rgba="0.85 0.65 0.25 0.5"/>
+          <body name="fl_foot" pos="0.29 0.0225 0">
+            <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+            <geom size="0.035" group="1" friction="0.8 0.02 0.01" solimp="0.015 1 0.031" rgba="0 0 0 0.5"/>
+            <site name="fl_foot" pos="0 0 0"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="spine_act" joint="spine_joint" forcerange="-18 18" biastype="affine" gainprm="50" biasprm="0 -50 -0.5"/>
+    <general name="fl_hip_act" joint="fl_hip_joint"/>
+    <general name="fl_knee_act" joint="fl_knee_joint"/>
+  </actuator>
+
+  <sensor>
+    <gyro site="imu_frame" name="gyro"/>
+    <velocimeter site="imu_frame" name="local_linvel"/>
+    <accelerometer site="imu_frame" name="accelerometer"/>
+    <framepos objtype="site" objname="imu_frame" name="global_position"/>
+    <framezaxis objtype="site" objname="imu_frame" name="upvector"/>
+    <framelinvel objtype="site" objname="imu_frame" name="global_linvel"/>
+    <frameangvel objtype="site" objname="imu_frame" name="global_angvel"/>
+    <framequat objtype="site" objname="imu_frame" name="orientation"/>
+    <jointpos joint="fl_hip_joint" name="fl_hip_pos"/>
+    <jointpos joint="fl_knee_joint" name="fl_knee_pos"/>
+    <jointvel joint="fl_hip_joint" name="fl_hip_vel"/>
+    <jointvel joint="fl_knee_joint" name="fl_knee_vel"/>
+  </sensor>
+</mujoco>

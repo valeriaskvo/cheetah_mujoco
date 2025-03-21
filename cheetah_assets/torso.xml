@@ -1,0 +1,49 @@
+<mujoco model="cheetah">
+  <compiler angle="radian" meshdir="meshes/" inertiafromgeom="false"/>
+
+  <default>
+    <general forcerange="-18 18" biastype="affine" gainprm="50 0 0" biasprm="0 -50 -0.5"/>
+    <joint damping="0.024" armature="0.011" range="-0.78 0.78"/>
+  </default>
+
+  <asset>
+    <mesh name="base" file="base.STL"/>
+    <mesh name="spine" file="spine.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="base">
+      <inertial pos="0.36059 -3.5411e-08 2.6263e-08" quat="0.500003 0.500003 0.499997 0.499997" mass="4" diaginertia="0.086585 0.086267 0.031067"/>
+      <joint name="floating_base_joint" type="free" limited="false" actuatorfrclimited="false"/>
+      <geom type="mesh" mesh="base"/>
+      <geom type="capsule" size="0.14" fromto="0.215 0 0 0.515 0 0" group="0" contype="1" conaffinity="1" rgba="0.85 0.65 0.25 0.5"/>
+      <site name="imu_frame" pos="0.485 0 0"/>
+      <site name="fl_hip_mount" pos="0.485 0.1775 0"/>
+      <site name="fr_hip_mount" pos="0.485 -0.1775 0"/>
+      <body name="spine" quat="0.965926 0 0.25882 0">
+        <inertial pos="-0.21386 2.4147e-07 -3.6136e-08" quat="0.500007 0.499998 0.5 0.499994" mass="2.818" diaginertia="0.019596 0.019319 0.0104"/>
+        <joint name="spine_joint" pos="0 0 0" axis="0 1 0"/>
+        <geom type="mesh" mesh="spine"/>
+        <geom type="capsule" size="0.0975" fromto="-0.1725 0 0 -0.270 0 0" group="0" contype="1" conaffinity="1" rgba="0.85 0.65 0.25 0.5"/>
+        <site name="bl_hip_mount" pos="-0.28023 0.1375 0" quat="0.999048 0 0.0436192 0"/>
+        <site name="br_hip_mount" pos="-0.28023 -0.1375 0" quat="0.999048 0 0.0436192 0"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="spine_act" joint="spine_joint"/>
+  </actuator>
+
+  <sensor>
+    <gyro site="imu_frame" name="gyro"/>
+    <velocimeter site="imu_frame" name="local_linvel"/>
+    <accelerometer site="imu_frame" name="accelerometer"/>
+    <framepos objtype="site" objname="imu_frame" name="global_position"/>
+    <framezaxis objtype="site" objname="imu_frame" name="upvector"/>
+    <framelinvel objtype="site" objname="imu_frame" name="global_linvel"/>
+    <frameangvel objtype="site" objname="imu_frame" name="global_angvel"/>
+    <framequat objtype="site" objname="imu_frame" name="orientation"/>
+  </sensor>
+
+</mujoco>

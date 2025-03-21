@@ -1,0 +1,40 @@
+<mujoco model="cheetah">
+  <compiler angle="radian" meshdir="meshes/" inertiafromgeom="false"/>
+
+  <asset>
+    <mesh name="bl_hip" file="bl_hip.STL"/>
+    <mesh name="bl_knee" file="bl_knee.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="bl_hip" pos="-0.28023 0.1375 0" quat="0.999048 0 0.0436192 0">
+      <inertial pos="-1.5467e-06 -0.0036898 -0.092943" quat="0.999589 0.0286807 1.42074e-05 -8.99596e-06" mass="0.40409" diaginertia="0.0030903 0.00299916 0.000578271"/>
+      <joint name="bl_hip_joint" pos="0 0 0" axis="0 1 0"/>
+      <geom type="mesh" mesh="bl_hip"/>
+      <geom type="capsule" size="0.045" fromto="0 0.0225 0 0 0.0225 -0.21" group="0" contype="1" conaffinity="1"  rgba="0.85 0.65 0.25 0.5"/>
+      <body name="bl_knee" pos="0 0 -0.21" quat="0.965926 0 -0.25882 0">
+        <inertial pos="-0.136981 0 0" quat="0.5 0.5 0.5 0.5" mass="0.191716" diaginertia="0.00208985 0.00203485 8.82166e-05"/>
+        <joint name="bl_knee_joint" pos="0 0 0" axis="0 1 0"/>
+        <geom type="mesh" mesh="bl_knee"/>
+        <geom type="capsule" size="0.035" fromto="-0.08 0.0225 0 -0.29 0.0225 0" group="0" contype="1" conaffinity="1"  rgba="0.85 0.65 0.25 0.5"/>
+        <body name="bl_foot" pos="-0.29 0.0225 0">
+          <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+          <geom group="1" type="sphere" size="0.035" solimp="0.015 1 0.031" friction="0.8 0.02 0.01" rgba="0 0 0 0.5"/>
+          <site name="bl_foot"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="bl_hip_act" joint="bl_hip_joint"/>
+    <general name="bl_knee_act" joint="bl_knee_joint"/>
+  </actuator>
+
+  <sensor>
+    <jointpos joint="bl_hip_joint" name="bl_hip_pos"/>
+    <jointpos joint="bl_knee_joint" name="bl_knee_pos"/>
+    <jointvel joint="bl_hip_joint" name="bl_hip_vel"/>
+    <jointvel joint="bl_knee_joint" name="bl_knee_vel"/>
+  </sensor>
+</mujoco>
