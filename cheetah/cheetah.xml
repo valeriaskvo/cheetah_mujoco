@@ -18,7 +18,6 @@
       <geom group="1" type="sphere" size="0.035" solimp="0.015 1 0.031" friction="0.8 0.02 0.01" material="contact"/>
     </default>
     <general forcerange="-18 18" biastype="affine" gainprm="50 0 0" biasprm="0 -50 -0.5"/>
-    <joint damping="0.024" armature="0.011" range="-0.78 0.78"/>
   </default>
 
   <asset>
@@ -52,16 +51,16 @@
       <site name="imu_frame" pos="0.485 0 0"/>
       <body name="fl_hip" pos="0.485 0.1775 0">
         <inertial pos="0 -0.0083713 -0.088755" quat="0.997892 0.0648985 0 0" mass="0.42319" diaginertia="0.0034493 0.00319477 0.000746558"/>
-        <joint name="fl_hip_joint" pos="0 0 0" axis="0 1 0"/>
+        <joint name="fl_hip_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
         <geom type="mesh" mesh="fl_hip"/>
         <geom type="capsule" size="0.045" fromto="0 0.0225 0 0 0.0225 -0.21" class="cheetah/collision"/>
         <body name="fl_knee" pos="0 0 -0.21" quat="0.965926 0 0.25882 0">
           <inertial pos="0.13698 0 0" quat="0.5 0.5 0.5 0.5" mass="0.19172" diaginertia="0.0020898 0.0020349 8.8217e-05"/>
-          <joint name="fl_knee_joint" pos="0 0 0" axis="0 1 0"/>
+          <joint name="fl_knee_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
           <geom type="mesh" mesh="fl_knee"/>
           <geom type="capsule" size="0.035" fromto="0.08 0.0225 0 0.29 0.0225 0" class="cheetah/collision"/>
           <body name="fl_foot" pos="0.29 0.0225 0">
-            <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
+            <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
             <geom class="cheetah/foot"/>
             <site name="fl_foot"/>
           </body>
@@ -69,16 +68,16 @@
       </body>
       <body name="fr_hip" pos="0.485 -0.1775 0">
         <inertial pos="0 0.0083713 -0.088755" quat="0.997892 -0.0648985 0 0" mass="0.42319" diaginertia="0.0034493 0.00319477 0.000746558"/>
-        <joint name="fr_hip_joint" pos="0 0 0" axis="0 1 0"/>
+        <joint name="fr_hip_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
         <geom type="mesh" mesh="fr_hip"/>
         <geom type="capsule" size="0.045" fromto="0 -0.0225 0 0 -0.0225 -0.21" class="cheetah/collision"/>
         <body name="fr_knee" pos="0 0 -0.21" quat="0.965926 0 0.25882 0">
           <inertial pos="0.13698 0 0" quat="0.5 0.5 0.5 0.5" mass="0.19172" diaginertia="0.0020898 0.0020349 8.8217e-05"/>
-          <joint name="fr_knee_joint" pos="0 0 0" axis="0 1 0"/>
+          <joint name="fr_knee_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
           <geom type="mesh" mesh="fr_knee"/>
           <geom type="capsule" size="0.035" fromto="0.08 -0.0225 0 0.29 -0.0225 0" class="cheetah/collision"/>
           <body name="fr_foot" pos="0.29 -0.0225 0">
-            <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
+            <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
             <geom class="cheetah/foot"/>
             <site name="fr_foot"/>
           </body>
@@ -86,21 +85,21 @@
       </body>
       <body name="spine" quat="0.965926 0 0.25882 0">
         <inertial pos="-0.21386 2.4147e-07 -3.6136e-08" quat="0.500007 0.499998 0.5 0.499994" mass="2.818" diaginertia="0.019596 0.019319 0.0104"/>
-        <joint name="spine_joint" pos="0 0 0" axis="0 1 0"/>
+        <joint name="spine_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
         <geom type="mesh" mesh="spine"/>
         <geom type="capsule" size="0.0975" fromto="-0.1725 0 0 -0.270 0 0" class="cheetah/collision"/>
         <body name="bl_hip" pos="-0.28023 0.1375 0" quat="0.999048 0 0.0436192 0">
           <inertial pos="-1.5467e-06 -0.0036898 -0.092943" quat="0.999589 0.0286807 1.42074e-05 -8.99596e-06" mass="0.40409" diaginertia="0.0030903 0.00299916 0.000578271"/>
-          <joint name="bl_hip_joint" pos="0 0 0" axis="0 1 0"/>
+          <joint name="bl_hip_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
           <geom type="mesh" mesh="bl_hip"/>
           <geom type="capsule" size="0.045" fromto="0 0.0225 0 0 0.0225 -0.21" class="cheetah/collision"/>
           <body name="bl_knee" pos="0 0 -0.21" quat="0.965926 0 -0.25882 0">
             <inertial pos="-0.136981 0 0" quat="0.5 0.5 0.5 0.5" mass="0.191716" diaginertia="0.00208985 0.00203485 8.82166e-05"/>
-            <joint name="bl_knee_joint" pos="0 0 0" axis="0 1 0"/>
+            <joint name="bl_knee_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
             <geom type="mesh" mesh="bl_knee"/>
             <geom type="capsule" size="0.035" fromto="-0.08 0.0225 0 -0.29 0.0225 0" class="cheetah/collision"/>
             <body name="bl_foot" pos="-0.29 0.0225 0">
-              <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
+              <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
               <geom class="cheetah/foot"/>
               <site name="bl_foot"/>
             </body>
@@ -108,16 +107,16 @@
         </body>
         <body name="br_hip" pos="-0.28023 -0.1375 0" quat="0.999048 0 0.0436192 0">
           <inertial pos="0 0.00368968 -0.092947" quat="0.999589 -0.0286799 0 0" mass="0.404108" diaginertia="0.00309049 0.00299939 0.00057831"/>
-          <joint name="br_hip_joint" pos="0 0 0" axis="0 1 0"/>
+          <joint name="br_hip_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
           <geom type="mesh" mesh="br_hip"/>
           <geom type="capsule" size="0.045" fromto="0 -0.0225 0 0 -0.0225 -0.21" class="cheetah/collision"/>
           <body name="br_knee" pos="0 0 -0.21" quat="0.965926 0 -0.25882 0">
             <inertial pos="-0.136981 0 0" quat="0.5 0.5 0.5 0.5" mass="0.191716" diaginertia="0.00208985 0.00203485 8.82166e-05"/>
-            <joint name="br_knee_joint" pos="0 0 0" axis="0 1 0"/>
+            <joint name="br_knee_joint" pos="0 0 0" axis="0 1 0" damping="0.024" armature="0.011" range="-0.78 0.78"/>
             <geom type="mesh" mesh="br_knee"/>
             <geom type="capsule" size="0.035" fromto="-0.08 -0.0225 0 -0.29 -0.0225 0" class="cheetah/collision"/>
             <body name="br_foot" pos="-0.29 -0.0225 0">
-              <!-- <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/> -->
+              <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
               <geom class="cheetah/foot"/>
               <site name="br_foot"/>
             </body>
