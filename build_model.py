@@ -1,40 +1,60 @@
 import mujoco
 from pprint import pprint
+import numpy as np
 
-def find_mount(spec, mount_name):
-    def _find_mount_recursive(body):
-        for site in body.sites:
-            if mount_name in site.name:
-                return body, site
+def quaternion_to_rotation_matrix(q):
+    w, x, y, z = q
+    xx, yy, zz = x*x, y*y, z*z
+    xy, xz, yz = x*y, x*z, y*z
+    wx, wy, wz = w*x, w*y, w*z
 
-        for child in body.bodies:
-            result = _find_mount_recursive(child)
-            if result:
-                return result
-        return None
+    return np.array([
+        [1 - 2*(yy + zz),     2*(xy - wz),       2*(xz + wy)],
+        [2*(xy + wz),         1 - 2*(xx + zz),   2*(yz - wx)],
+        [2*(xz - wy),         2*(yz + wx),       1 - 2*(xx + yy)]
+    ])
 
-    result = _find_mount_recursive(spec.worldbody)
-    if not result:
-        raise ValueError(f"Mount point '{mount_name}' not found")
-    return result
+assembled_model = mujoco.MjSpec.from_file("bloks_test/test_blocks/test_blocks.xml")
+diff_body = mujoco.MjSpec.from_file("bloks_test/test_blocks_assy/test_blocks_assy.xml")
 
-scene = mujoco.MjSpec.from_file("cheetah_assets/scene.xml")
-torso = mujoco.MjSpec.from_file("cheetah_assets/torso.xml")
-fl_leg = mujoco.MjSpec.from_file("cheetah_assets/fl_leg.xml")
-fr_leg = mujoco.MjSpec.from_file("cheetah_assets/fr_leg.xml")
+body = diff_body.bodies[2]
 
-body = fl_leg.worldbody.bodies[0]
-pprint(dir(body))
-print(body.childclass)
+R = quaternion_to_rotation_matrix(body.iquat)
+I = np.diag(body.inertia)
+I_tot = R @ I @ R.T
+print(body.name)
+print(I_tot)
 
-# parent_body, mount_site = find_mount(torso, 'fl_hip_mount')
-# mount_site.attach_body(fl_leg.bodies[1])
+mass_total = 0
+ipos = np.array([0., 0., 0.])
+pos = np.array([0., 0., 0.])
+I_tot = np.zeros((3,3))
 
-# for joint in torso.joints:
-#     if joint.type == mujoco.mjtJoint.mjJNT_FREE:
-#         joint.delete()
-# torso.compile()
+for body in diff_body.bodies[1:]:
+    mass_total += body.mass
+    pos += quaternion_to_rotation_matrix(body.quat) @ body.pos
+    ipos +=  body.mass * (pos + body.ipos)
+    I = np.diag(body.inertia)
+    I_body = R @ I @ R.T
+    print(body.name, body.mass, body.ipos)
+    print(I_body)
+    print()
 
-# xml_content = torso.to_xml()
-# with open("cheetah_assets/cheetah_assy.xml", "w") as f:
-#     f.write(xml_content)
+ipos = ipos / mass_total
+
+for body in diff_body.bodies[1:]:
+    mass_total += body.mass
+    pos += quaternion_to_rotation_matrix(body.quat) @ body.pos
+    ipos_curr =  pos + body.ipos
+    I = np.diag(body.inertia)
+    I_body = R @ I @ R.T
+    d = ipos_curr - ipos
+    I_tot += I_body + body.mass * ( - d @ d.T)
+    print(body.name, body.mass, body.ipos)
+    print(I_body)
+    print()
+
+print("Full robot", mass_total, ipos)
+print(I_tot)
+
+# pprint(dir(diff_body))
