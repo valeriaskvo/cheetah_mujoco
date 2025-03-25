@@ -1,0 +1,14 @@
+<mujoco model="test_blocks">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <asset>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="base_link">
+      <inertial pos="0.0405502 0 0.139135" quat="0.701436 0.0893711 0.0893711 0.701436" mass="5.8875" diaginertia="0.0458053 0.0425096 0.00574879"/>
+      <geom type="mesh" mesh="base_link"/>
+    </body>
+  </worldbody>
+</mujoco>

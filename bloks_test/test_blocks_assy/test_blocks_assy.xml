@@ -1,0 +1,24 @@
+<mujoco model="test_blocks_assy">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <asset>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="box_11" file="box_11.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="box_21" file="box_21.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="base_link">
+      <inertial pos="0 0 0.05" mass="1.9625" diaginertia="0.00204427 0.00204427 0.000817708"/>
+      <geom type="mesh" mesh="base_link"/>
+      <body name="box_11" pos="0.025 0 0.1">
+        <inertial pos="0.0466506 0 0.0308013" quat="0.965926 0 0.258819 0" mass="1.9625" diaginertia="0.00204427 0.00204427 0.000817708"/>
+        <geom pos="-0.025 0 -0.1" type="mesh" mesh="box_11"/>
+        <body name="box_21" pos="0.05 0 0.086603">
+          <inertial pos="-0.025 0 0.0499995" mass="1.9625" diaginertia="0.00204427 0.00204427 0.000817708"/>
+          <geom pos="-0.075 0 -0.186603" quat="1 0 0 0" type="mesh" mesh="box_21"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

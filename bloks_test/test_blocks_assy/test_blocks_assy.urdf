@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<robot name="test_blocks_assy">
+
+  <mujoco>
+    <compiler meshdir="meshes" fusestatic="false"/>
+  </mujoco>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+    <mass value="1.9625"/>
+    <inertia ixx="0.0020442708333333302" iyy="0.0020442708333333302" izz="0.0008177083333333328" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="box_11">
+  <inertial>
+    <origin xyz="0.046650635094610975 0.0 0.030801270189221935" rpy="0 0 0"/>
+    <mass value="1.9625000000000006"/>
+    <inertia ixx="0.0017376302083333267" iyy="0.0020442708333333268" izz="0.0011243489583333335" ixy="0.0" iyz="0.0" ixz="-0.0005311171421646735"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.025 -0.0 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/box_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+
+  </visual>
+  <collision>
+    <origin xyz="-0.025 -0.0 -0.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/box_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="box_21">
+  <inertial>
+    <origin xyz="-0.024999999999999994 0.0 0.049999540378443896" rpy="0 0 0"/>
+    <mass value="1.9625"/>
+    <inertia ixx="0.0020442708333333476" iyy="0.0020442708333333476" izz="0.0008177083333333309" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.075 -0.0 -0.186603" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/box_21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.075 -0.0 -0.186603" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/box_21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute_3" type="fixed">
+  <origin xyz="0.025 0.0 0.1" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="box_11"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_4" type="fixed">
+  <origin xyz="0.05 0.0 0.086603" rpy="0 0 0"/>
+  <parent link="box_11"/>
+  <child link="box_21"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+</robot>
