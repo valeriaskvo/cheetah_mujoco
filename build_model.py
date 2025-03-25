@@ -41,18 +41,17 @@ for body in diff_body.bodies[1:]:
     print()
 
 ipos = ipos / mass_total
-
+pos = np.array([0., 0., 0.])
 for body in diff_body.bodies[1:]:
     mass_total += body.mass
     pos += quaternion_to_rotation_matrix(body.quat) @ body.pos
-    ipos_curr =  pos + body.ipos
+    ipos_curr = pos + body.ipos
     I = np.diag(body.inertia)
     I_body = R @ I @ R.T
-    d = ipos_curr - ipos
-    I_tot += I_body + body.mass * ( - d @ d.T)
-    print(body.name, body.mass, body.ipos)
-    print(I_body)
-    print()
+    d = (ipos_curr - ipos)
+    d_squared = np.dot(d, d)
+    d_outer = np.outer(d, d)
+    I_tot += I_body + body.mass * (d_squared * np.eye(3) - d_outer)
 
 print("Full robot", mass_total, ipos)
 print(I_tot)
